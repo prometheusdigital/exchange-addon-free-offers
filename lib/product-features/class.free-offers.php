@@ -93,7 +93,7 @@ class IT_Exchange_Addon_Free_Offers_Product_Feature {
 	 * @return void
 	*/
 	function register_metabox() {
-		add_meta_box( 'it-exchange-product-free-offers', __( 'Free Offers', 'LION' ), array( $this, 'print_metabox' ), 'it_exchange_prod', 'it_exchange_advanced' );
+		add_meta_box( 'it-exchange-product-feature-free-offers', __( 'Free Offers', 'LION' ), array( $this, 'print_metabox' ), 'it_exchange_prod', 'it_exchange_advanced' );
 	}
 
 	/**
@@ -107,7 +107,12 @@ class IT_Exchange_Addon_Free_Offers_Product_Feature {
 		$product = it_exchange_get_product( $post );
 
 		// Set the value of the feature for this product
-		$product_feature_value = it_exchange_get_product_feature( $product->ID, 'free-offers' );
+		$values = it_exchange_get_product_feature( $product->ID, 'free-offers' );
+
+		$values['hide-price-in-store'] = ! empty( $values['hide-price-in-store'] );
+		$values['hide-price-on-product-page'] = ! empty( $values['hide-price-on-product-page'] );
+		$values['buy-now-label'] = empty( $values['buy-now-label'] ) ? __( 'Buy Now', 'LION' ) : $values['buy-now-label'];
+		$values['complete-purchase-label'] = empty( $values['complete-purchase-label'] ) ? __( 'Complete Purchase', 'LION' ) : $values['complete-purchase-label'];
 		
 		$description = sprintf( __( "These settings will be applied if the product's price is %s.", 'LION' ), it_exchange_format_price( '0' ) );
 		$description = apply_filters( 'it_exchange_membership_addon_product_welcome-message_metabox_description', $description );
@@ -118,13 +123,20 @@ class IT_Exchange_Addon_Free_Offers_Product_Feature {
 	
 		?>
 		<div class="hide-price-label-settings">
-			<p>
-				<input type="checkbox" name="it-exchange-free-offers[hide-price-in-store]" value="" />&nbsp;
-				<?php _e( 'Hide product price in Exchange store?', 'LION' ); ?><br />
+			<input type="checkbox" name="it-exchange-product-feature-free-offers[hide-price-in-store]" value="true" <?php checked( true, $values['hide-price-in-store'] ); ?>/>&nbsp;
+			<?php _e( 'Hide product price in Exchange store?', 'LION' ); ?><br />
 
-				<input type="checkbox" name="it-exchange-free-offers[hide-price-on-product-screen]" value="" />&nbsp;
-				<?php _e( 'Hide product price on Exchange product page?', 'LION' ); ?><br />
-			</p>
+			<input type="checkbox" name="it-exchange-product-feature-free-offers[hide-price-on-product-page]" value="true" <?php checked( true, $values['hide-price-on-product-page'] ); ?>/>&nbsp;
+			<?php _e( 'Hide product price on Exchange product page?', 'LION' ); ?><br />
+		</div>
+
+		<div class="button-labels">
+			<div class="buy-now-label">
+				<?php _e( 'Buy Now button', 'LION' ); ?>&nbsp;<input type="text" value="<?php esc_attr_e( $values['buy-now-label'] ); ?>" name="it-exchange-product-feature-free-offers[buy-now-label]" />
+			</div>
+			<div class="complete-purchase-label">
+				<?php _e( 'Complete Purchase button', 'LION' ); ?>&nbsp;<input type="text" value="<?php esc_attr_e( $values['complete-purchase-label'] ); ?>" name="it-exchange-product-feature-free-offers[complete-purchase-label]" />
+			</div>
 		</div>
 		<?php
 	}
@@ -148,18 +160,17 @@ class IT_Exchange_Addon_Free_Offers_Product_Feature {
 			return;
 
 		// Abort if this product type doesn't support this feature 
-		if ( ! it_exchange_product_type_supports_feature( $product_type, 'free-offers' ) || empty( $_POST['it-exchange-product-free-offers']  ))
+		if ( ! it_exchange_product_type_supports_feature( $product_type, 'free-offers' ) || empty( $_POST['it-exchange-product-feature-free-offers']  ))
 			return;
 
 		// If the value is empty (0), delete the key, otherwise save
-/*
-		if ( empty( $_POST['it-exchange-product-membership-welcome-message'] ) )
-			delete_post_meta( $product_id, '_it-exchange-product-membership-welcome-message' );
+		if ( empty( $_POST['it-exchange-product-feature-free-offers'] ) )
+			delete_post_meta( $product_id, '_it-exchange-product-feature-free-offers' );
 		else
-			it_exchange_update_product_feature( $product_id, 'membership-welcome-message', $_POST['it-exchange-product-membership-welcome-message'] );
-*/
+			it_exchange_update_product_feature( $product_id, 'free-offers', $_POST['it-exchange-product-feature-free-offers'] );
 	}
-/**
+
+	/**
 	 * This updates the feature for a product
 	 *
 	 * @since 1.0.0
@@ -169,7 +180,7 @@ class IT_Exchange_Addon_Free_Offers_Product_Feature {
 	 * @return bolean
 	*/
 	function save_feature( $product_id, $new_value ) {
-		update_post_meta( $product_id, '_it-exchange-product-free-offers', $new_value );
+		update_post_meta( $product_id, '_it-exchange-product-feature-free-offers', $new_value );
 		return true;
 	}
 
@@ -179,7 +190,7 @@ class IT_Exchange_Addon_Free_Offers_Product_Feature {
 	 * @since 1.0.0
 	 * @param mixed $existing the values passed in by the WP Filter API. Ignored here.
 	 * @param integer product_id the WordPress post ID
-	 * @return string product feature
+	 * @return array product feature
 	*/
 	function get_feature( $existing, $product_id ) {
 		// Is the the add / edit product page?
@@ -188,7 +199,7 @@ class IT_Exchange_Addon_Free_Offers_Product_Feature {
 
 		// Return the value if supported or on add/edit screen
 		if ( it_exchange_product_supports_feature( $product_id, 'free-offers' ) || $editing_product )
-			return get_post_meta( $product_id, '_it-exchange-product-free-offers', true );
+			return get_post_meta( $product_id, '_it-exchange-product-feature-free-offers', true );
 
 		return false;
 	}

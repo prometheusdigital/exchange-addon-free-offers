@@ -109,14 +109,24 @@ class IT_Exchange_Addon_Free_Offers_Product_Feature {
 		// Set the value of the feature for this product
 		$product_feature_value = it_exchange_get_product_feature( $product->ID, 'free-offers' );
 		
-		$description = __( "This message will appear above the list of protected membership content in your user's account. Use it to describe this membership, let them know what to read first or do next.", 'LION' );
+		$description = sprintf( __( "These settings will be applied if the product's price is %s.", 'LION' ), it_exchange_format_price( '0' ) );
 		$description = apply_filters( 'it_exchange_membership_addon_product_welcome-message_metabox_description', $description );
 
 		if ( $description ) {
 			echo '<p class="intro-description">' . $description . '</p>';
 		}
 	
-		echo "<p>HERE I AM</p>";
+		?>
+		<div class="hide-price-label-settings">
+			<p>
+				<input type="checkbox" name="it-exchange-free-offers[hide-price-in-store]" value="" />&nbsp;
+				<?php _e( 'Hide product price in Exchange store?', 'LION' ); ?><br />
+
+				<input type="checkbox" name="it-exchange-free-offers[hide-price-on-product-screen]" value="" />&nbsp;
+				<?php _e( 'Hide product price on Exchange product page?', 'LION' ); ?><br />
+			</p>
+		</div>
+		<?php
 	}
 
 	/**
@@ -218,4 +228,4 @@ class IT_Exchange_Addon_Free_Offers_Product_Feature {
 		return true;
 	}
 }
-$IT_Exchange_Addon_Free_Offers_Product_Type = new IT_Exchange_Addon_Free_Offers_Product_Type();
+$IT_Exchange_Addon_Free_Offers_Product_Feature = new IT_Exchange_Addon_Free_Offers_Product_Feature();

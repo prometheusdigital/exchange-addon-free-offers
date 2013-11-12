@@ -132,10 +132,10 @@ class IT_Exchange_Addon_Free_Offers_Product_Feature {
 
 		<div class="button-labels">
 			<div class="buy-now-label">
-				<?php _e( 'Buy Now Button Label', 'LION' ); ?>&nbsp;<input type="text" value="<?php esc_attr_e( $values['buy-now-label'] ); ?>" name="it-exchange-product-feature-free-offers[buy-now-label]" />
+				<?php _e( 'Buy Now Button Text', 'LION' ); ?>&nbsp;<input type="text" value="<?php esc_attr_e( $values['buy-now-label'] ); ?>" name="it-exchange-product-feature-free-offers[buy-now-label]" />
 			</div>
 			<div class="complete-purchase-label">
-				<?php _e( 'Purchase Button Label', 'LION' ); ?>&nbsp;<input type="text" value="<?php esc_attr_e( $values['complete-purchase-label'] ); ?>" name="it-exchange-product-feature-free-offers[complete-purchase-label]" />
+				<?php _e( 'Purchase Button Text', 'LION' ); ?>&nbsp;<input type="text" value="<?php esc_attr_e( $values['complete-purchase-label'] ); ?>" name="it-exchange-product-feature-free-offers[complete-purchase-label]" />
 			</div>
 		</div>
 		<?php

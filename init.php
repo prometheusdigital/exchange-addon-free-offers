@@ -50,7 +50,7 @@ add_filter( 'it_exchange_get_content_product_product_info_loop_elements', 'it_ex
 */
 function it_exchange_maybe_alter_buy_now_button_label( $incoming_options, $product_id ) {
 	if ( empty( $product_id ) || ! $settings = it_exchange_get_product_feature( $product_id, 'free-offers' ) )
-		continue;
+		return $incoming_options;
 
 	$incoming_options['label'] = empty( $settings['buy-now-label'] ) ? $incoming : $settings['buy-now-label'];
 	return $incoming_options;

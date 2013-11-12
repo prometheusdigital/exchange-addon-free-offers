@@ -86,3 +86,17 @@ function it_exchange_maybe_alter_zero_sum_checkout_button_label( $incoming ) {
 	return $incoming;
 }
 add_filter( 'zero_sum_checkout_button_label', 'it_exchange_maybe_alter_zero_sum_checkout_button_label' );
+
+/**
+ * Enqueues styles for Free Offers pages
+ *
+ * @since 1.0.0
+ * @param string $hook_suffix WordPress Hook Suffix
+ * @param string $post_type WordPress Post Type
+*/
+function it_exchange_free_offers_addon_admin_wp_enqueue_styles( $hook_suffix, $post_type ) {
+	if ( isset( $post_type ) && 'it_exchange_prod' === $post_type ) {
+		wp_enqueue_style( 'it-exchange-free-offers-addon-add-edit-product', ITUtility::get_url_from_file( dirname( __FILE__ ) ) . '/lib/styles/add-edit-product.css' );
+	}
+}
+add_action( 'it_exchange_admin_wp_enqueue_styles', 'it_exchange_free_offers_addon_admin_wp_enqueue_styles', 10, 2 );

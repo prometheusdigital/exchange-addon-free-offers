@@ -123,19 +123,19 @@ class IT_Exchange_Addon_Free_Offers_Product_Feature {
 	
 		?>
 		<div class="hide-price-label-settings">
-			<input type="checkbox" name="it-exchange-product-feature-free-offers[hide-price-in-store]" value="true" <?php checked( true, $values['hide-price-in-store'] ); ?>/>&nbsp;
-			<?php _e( 'Hide product price in Exchange store?', 'LION' ); ?><br />
+			<label><input type="checkbox" name="it-exchange-product-feature-free-offers[hide-price-in-store]" value="true" <?php checked( true, $values['hide-price-in-store'] ); ?>/>&nbsp;
+			<?php _e( 'Hide product price in Exchange store?', 'LION' ); ?></label><br />
 
-			<input type="checkbox" name="it-exchange-product-feature-free-offers[hide-price-on-product-page]" value="true" <?php checked( true, $values['hide-price-on-product-page'] ); ?>/>&nbsp;
-			<?php _e( 'Hide product price on Exchange product page?', 'LION' ); ?><br />
+			<label><input type="checkbox" name="it-exchange-product-feature-free-offers[hide-price-on-product-page]" value="true" <?php checked( true, $values['hide-price-on-product-page'] ); ?>/>&nbsp;
+			<?php _e( 'Hide product price on Exchange product page?', 'LION' ); ?></label><br />
 		</div>
 
 		<div class="button-labels">
 			<div class="buy-now-label">
-				<?php _e( 'Buy Now button', 'LION' ); ?>&nbsp;<input type="text" value="<?php esc_attr_e( $values['buy-now-label'] ); ?>" name="it-exchange-product-feature-free-offers[buy-now-label]" />
+				<?php _e( 'Buy Now Button Label', 'LION' ); ?>&nbsp;<input type="text" value="<?php esc_attr_e( $values['buy-now-label'] ); ?>" name="it-exchange-product-feature-free-offers[buy-now-label]" />
 			</div>
 			<div class="complete-purchase-label">
-				<?php _e( 'Complete Purchase button', 'LION' ); ?>&nbsp;<input type="text" value="<?php esc_attr_e( $values['complete-purchase-label'] ); ?>" name="it-exchange-product-feature-free-offers[complete-purchase-label]" />
+				<?php _e( 'Purchase Button Label', 'LION' ); ?>&nbsp;<input type="text" value="<?php esc_attr_e( $values['complete-purchase-label'] ); ?>" name="it-exchange-product-feature-free-offers[complete-purchase-label]" />
 			</div>
 		</div>
 		<?php

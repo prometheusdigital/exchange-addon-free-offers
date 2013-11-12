@@ -20,7 +20,6 @@ require( 'lib/product-features/load.php' );
  * @return array modified tempatle part elements
 */
 function it_exchange_free_offers_maybe_remove_base_price( $incoming ) {
-
 	$product_id = empty( $GLOBALS['it_exchange']['product']->ID ) ? false : $GLOBALS['it_exchange']['product']->ID;
 
 	// Return if we can't find a product ID
@@ -67,7 +66,11 @@ add_filter( 'it_exchange_product_theme_api_buy_now_options', 'it_exchange_maybe_
  * @return string
 */
 function it_exchange_maybe_alter_zero_sum_checkout_button_label( $incoming ) {
-	foreach( (array) it_exchange_get_cart_products() as $product => $details ) {
+	$cart_products = (array) it_exchange_get_cart_products();
+	if ( count( $cart_products ) > 1 )
+		return $incoming;
+
+	foreach( $cart_products as $product => $details ) {
 		if ( empty( $details['product_id'] ) || ! $settings = it_exchange_get_product_feature( $details['product_id'], 'free-offers' ) )
 			continue;
 

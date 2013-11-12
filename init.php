@@ -22,6 +22,9 @@ require( 'lib/product-features/load.php' );
 function it_exchange_free_offers_maybe_remove_base_price( $incoming ) {
 	$product_id = empty( $GLOBALS['it_exchange']['product']->ID ) ? false : $GLOBALS['it_exchange']['product']->ID;
 
+	if ( it_exchange_product_supports_feature( $product_id, 'base-price' ) && ( it_exchange_get_product_feature( $product_id, 'base-price' ) > 0 ) )
+		return $incoming;
+
 	// Return if we can't find a product ID
 	if ( empty( $product_id ) )
 		return $incoming;
@@ -49,6 +52,10 @@ add_filter( 'it_exchange_get_content_product_product_info_loop_elements', 'it_ex
  * @return array
 */
 function it_exchange_maybe_alter_buy_now_button_label( $incoming_options, $product_id ) {
+
+	if ( it_exchange_product_supports_feature( $product_id, 'base-price' ) && ( it_exchange_get_product_feature( $product_id, 'base-price' ) > 0 ) )
+		return $incoming_options;
+
 	if ( empty( $product_id ) || ! $settings = it_exchange_get_product_feature( $product_id, 'free-offers' ) )
 		return $incoming_options;
 

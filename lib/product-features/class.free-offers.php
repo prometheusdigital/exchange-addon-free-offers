@@ -114,7 +114,7 @@ class IT_Exchange_Addon_Free_Offers_Product_Feature {
 		$values['buy-now-label'] = empty( $values['buy-now-label'] ) ? __( 'Buy Now', 'LION' ) : $values['buy-now-label'];
 		$values['complete-purchase-label'] = empty( $values['complete-purchase-label'] ) ? __( 'Complete Purchase', 'LION' ) : $values['complete-purchase-label'];
 		
-		$description = sprintf( __( "These settings will be applied if the product's price is %s.", 'LION' ), it_exchange_format_price( '0' ) );
+		$description = sprintf( __( "These settings will be applied if the product's base price is %s prior to discounts and taxes.", 'LION' ), it_exchange_format_price( '0' ) );
 		$description = apply_filters( 'it_exchange_membership_addon_product_welcome-message_metabox_description', $description );
 
 		if ( $description ) {

@@ -40,6 +40,7 @@ function it_exchange_free_offers_maybe_remove_base_price( $incoming ) {
 	return $incoming;
 }
 add_filter( 'it_exchange_get_store_product_product_info_loop_elements', 'it_exchange_free_offers_maybe_remove_base_price', 10 );
+add_filter( 'it_exchange_get_store_product_product_features_elements', 'it_exchange_free_offers_maybe_remove_base_price', 10 );
 add_filter( 'it_exchange_get_content_product_product_info_loop_elements', 'it_exchange_free_offers_maybe_remove_base_price', 10 );
 
 /**

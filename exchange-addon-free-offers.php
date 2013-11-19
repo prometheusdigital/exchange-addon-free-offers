@@ -3,7 +3,7 @@
  * Plugin Name: iThemes Exchange - Free Offers
  * Version: 1.0.0
  * Description: Allows you to turn any product into a free offer
- * Plugin URI: http://ithemes.com/exchange/free-offers/
+ * Plugin URI: http://ithemes.com/purchase/free-offers-add-on/
  * Author: iThemes
  * Author URI: http://ithemes.com
  * iThemes Package: exchange-addon-free-offers
@@ -28,7 +28,7 @@ function it_exchange_register_free_offers_addon() {
 		'name'              => __( 'Free Offers', 'LION' ),
 		'description'       => __( 'Allows you to turn any product into a free offer.', 'LION' ),
 		'author'            => 'iThemes',
-		'author_url'        => 'http://ithemes.com/exchange/free-offers/',
+		'author_url'        => 'http://ithemes.com/purchase/free-offers-add-on/',
 		'icon'              => ITUtility::get_url_from_file( dirname( __FILE__ ) . '/lib/images/free-offers-50px.png' ),
 		'file'              => dirname( __FILE__ ) . '/init.php',
 		'category'          => 'product-feature',

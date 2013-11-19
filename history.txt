@@ -1,2 +1,5 @@
+1.0.1 - 2013-11-19 - Glenn Ansley
+	Update add-on image
+	Update add-on URL
 1.0.0 - 2013-11-19 - Glenn Ansley, Ty Carlson, Brad Ulrich
 	Initial Release

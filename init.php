@@ -110,7 +110,7 @@ add_action( 'it_exchange_admin_wp_enqueue_styles', 'it_exchange_free_offers_addo
  * @return void
 */
 function it_exchange_addon_free_offers_show_version_nag() {
-    if ( $GLOBALS['it_exchange']['version'] < '1.6.2' ) { 
+	if ( version_compare( $GLOBALS['it_exchange']['version'], '1.6.2', '<' ) ) {
         ?>  
         <div id="it-exchange-add-on-min-version-nag" class="it-exchange-nag">
             <?php printf( __( 'The Free Offers add-on requires iThemes Exchange version 1.6.2 or greater. %sPlease upgrade Exchange%s.', 'LION' ), '<a href="' . admin_url( 'update-core.php' ) . '">', '</a>' ); ?>

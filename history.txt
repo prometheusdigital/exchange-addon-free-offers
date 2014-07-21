@@ -1,10 +1,10 @@
-1.0.2 - 2013-11-19 - Glenn Ansley
-	Add version nag
+1.0.0 - 2013-11-19 - Glenn Ansley, Ty Carlson, Brad Ulrich
+	Initial Release
 1.0.1 - 2013-11-19 - Glenn Ansley
 	Update add-on image
 	Update add-on URL
-1.0.0 - 2013-11-19 - Glenn Ansley, Ty Carlson, Brad Ulrich
-	Initial Release
+1.0.2 - 2013-11-19 - Glenn Ansley
+	Add version nag
 1.0.3 - 2013-12-13 - Packaging Bot (lib/updater)
 	Enhancement: Recently updated plugins and themes no longer report that an update is available.
 	Enhancement: Added alternate line styling to the listings on the licensing page.
@@ -16,3 +16,5 @@
 	Bug Fix: Licensing will now be universal across all sites of a multisite network. This means that you will only need to license on one site to have the license apply across the entire network.
 1.0.6 - 2014-02-03 - Packaging Bot (lib/updater)
 	Bug Fix: Licensing on SSL-enabled sites now works properly.
+1.0.7 - 2014-07-21 - Lew Ayotte	
+	Fixing version compare

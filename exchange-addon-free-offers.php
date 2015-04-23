@@ -1,7 +1,7 @@
 <?php
 /*
  * Plugin Name: iThemes Exchange - Free Offers
- * Version: 1.0.8
+ * Version: 1.0.9
  * Description: Allows you to turn any product into a free offer
  * Plugin URI: http://ithemes.com/purchase/free-offers-add-on/
  * Author: iThemes

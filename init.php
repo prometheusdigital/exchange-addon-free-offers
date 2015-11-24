@@ -33,7 +33,9 @@ function it_exchange_free_offers_maybe_remove_base_price( $incoming ) {
 		if ( it_exchange_is_page( 'store' ) && ! empty( $settings['hide-price-in-store'] ) && ( FALSE !== ( $index = array_search( 'base-price', $incoming ) ) ) )
 			unset( $incoming[$index] );
 
-		if ( it_exchange_is_page( 'product' ) && ! empty( $settings['hide-price-on-product-page'] ) && ( FALSE !== ( $index = array_search( 'base-price', $incoming ) ) ) )
+		$is_product = it_exchange_is_page( 'product' ) || ( class_exists('IT_Exchange_SW_Shortcode') && IT_Exchange_SW_Shortcode::has_shortcode() );
+
+		if ( $is_product && ! empty( $settings['hide-price-on-product-page'] ) && ( FALSE !== ( $index = array_search( 'base-price', $incoming ) ) ) )
 			unset( $incoming[$index] );
 	}
 

@@ -103,7 +103,7 @@ class IT_Exchange_Addon_Free_Offers_Product_Feature {
 	 * @return void
 	*/
 	function register_metabox() {
-		add_meta_box( 'it-exchange-product-feature-free-offers', __( 'Free Offers', 'LION' ), array( $this, 'print_metabox' ), 'it_exchange_prod', 'it_exchange_advanced' );
+		add_meta_box( 'it-exchange-product-feature-free-offers', __( 'Free Offers', 'LION' ), array( $this, 'print_metabox' ), 'it_exchange_prod', 'normal' );
 	}
 
 	/**

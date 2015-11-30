@@ -27,3 +27,6 @@
 	Enhancement: Updated link to iThemes support.
 1.1.0 - 2015-11-04 - Lew Ayotte
 	PHP7 Updates
+1.2.0 - 2015-11-30 - Lew Ayotte
+	Move metabox to alphabetical ordered section
+	Add support for the SW in non-product page contexts

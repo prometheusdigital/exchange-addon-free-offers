@@ -34,6 +34,7 @@ function it_exchange_register_free_offers_addon() {
 		'file'              => dirname( __FILE__ ) . '/init.php',
 		'category'          => 'product-feature',
 		'basename'          => plugin_basename( __FILE__ ),
+		'settings-callback' => 'it_exchange_free_offers_addon_settings_callback',
 		'labels'      => array(
 			'singular_name' => __( 'Free Offer', 'LION' ),
 		),

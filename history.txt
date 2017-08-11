@@ -16,7 +16,7 @@
 	Bug Fix: Licensing will now be universal across all sites of a multisite network. This means that you will only need to license on one site to have the license apply across the entire network.
 1.0.6 - 2014-02-03 - Packaging Bot (lib/updater)
 	Bug Fix: Licensing on SSL-enabled sites now works properly.
-1.0.7 - 2014-07-21 - Lew Ayotte	
+1.0.7 - 2014-07-21 - Lew Ayotte
 	Fixing version compare
 1.0.8 - 2014-11-14 - Packaging Bot (lib/updater)
 	Enhancement: Reduced caching to allow updates to appear more quickly.
@@ -30,3 +30,6 @@
 1.2.0 - 2015-11-30 - Lew Ayotte
 	Move metabox to alphabetical ordered section
 	Add support for the SW in non-product page contexts
+1.2.1 - 2017-08-01 - AJ Morris
+	Enhancement: Rebrand
+	Enhancement: License Key and License System

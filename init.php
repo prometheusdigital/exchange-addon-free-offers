@@ -10,6 +10,14 @@
 */
 require( 'lib/product-features/load.php' );
 
+/**
+ * Exchange will build your add-on's settings page for you and link to it from our add-on
+ * screen. You are free to link from it elsewhere as well if you'd like... or to not use our API
+ * at all. This file has all the functions related to registering the page, printing the form, and saving
+ * the options. This includes the wizard settings. Additionally, we use the Exchange storage API to
+ * save / retreive options. Add-ons are not required to do this.
+*/
+include( 'lib/addon-settings.php' );
 
 /**
  * Remove proudct base price from templates depending on product settings
@@ -113,7 +121,7 @@ add_action( 'it_exchange_admin_wp_enqueue_styles', 'it_exchange_free_offers_addo
 */
 function it_exchange_addon_free_offers_show_version_nag() {
 	if ( version_compare( $GLOBALS['it_exchange']['version'], '1.6.2', '<' ) ) {
-        ?>  
+        ?>
         <div id="it-exchange-add-on-min-version-nag" class="it-exchange-nag">
             <?php printf( __( 'The Free Offers add-on requires iThemes Exchange version 1.6.2 or greater. %sPlease upgrade Exchange%s.', 'LION' ), '<a href="' . admin_url( 'update-core.php' ) . '">', '</a>' ); ?>
         </div>
@@ -125,6 +133,6 @@ function it_exchange_addon_free_offers_show_version_nag() {
             });
         </script>
         <?php
-    }   
+    }
 }
 add_action( 'admin_notices', 'it_exchange_addon_free_offers_show_version_nag' );
